@@ -1,0 +1,49 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+dist/
+build/
+
+# Vite cache
+.vite/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# MacOS files
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Miscellaneous
+*.tgz
+*.lock
+
+# Dev cache
+public/lost
