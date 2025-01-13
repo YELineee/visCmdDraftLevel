@@ -13,14 +13,16 @@
   },
   "dependencies": {
     "@visactor/vchart": "^1.12.10",
+    "animejs": "^3.2.2",
     "dayjs": "^1.11.13",
-    "gasp": "^0.0.2",
+    "gsap": "^3.12.5",
     "html2canvas": "^1.4.1",
     "lenis": "^1.1.16",
     "matter-js": "^0.20.0",
     "pinia": "^2.1.7",
     "vchart": "^1.0.0",
     "vue": "^3.4.29",
+    "vue-animejs": "^2.1.1",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
