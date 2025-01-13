@@ -77,6 +77,24 @@ export const useHistoryDataStore = defineStore('historyData', () => {
 
     const dailyDataArray = Array.from(dailyData, ([date, value]) => ({ date, value }));
 
+    const mostUsedCmdDayPerYear = allData.reduce((acc: Map<string, { date: string, count: number }>, curr: any) => {
+      const date = `${curr.year}-${curr.month}-${curr.day}`;
+      const year = curr.year;
+      if (!acc.has(year) || acc.get(year)!.count < dailyData.get(date)!) {
+        acc.set(year, { date, count: dailyData.get(date)! });
+      }
+      return acc;
+    }, new Map<string, { date: string, count: number }>());
+
+    const hourlyData = allData.reduce((acc: Record<number, Record<number, number>>, curr: any) => {
+      if (!acc[curr.year]) {
+        acc[curr.year] = {};
+      }
+      const yearMap = acc[curr.year];
+      yearMap[curr.hour] = (yearMap[curr.hour] || 0) + 1;
+      return acc;
+    }, {});
+
     return {
       totalCommands,
       periods: Object.fromEntries(periods),
@@ -86,6 +104,8 @@ export const useHistoryDataStore = defineStore('historyData', () => {
       dailyData: dailyDataArray,
       mostUsedCmd,
       periodCounts,
+      mostUsedCmdDayPerYear: Object.fromEntries(mostUsedCmdDayPerYear),
+      hourlyData,
     };
   });
 

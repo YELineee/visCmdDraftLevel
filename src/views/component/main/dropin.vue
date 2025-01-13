@@ -104,6 +104,7 @@ function history2data(fileName, historyText) {
                year,
                month,
                day,
+               hour,
                period,
                mainCmd,
                contentCmd: cmdContent.join(' '),
