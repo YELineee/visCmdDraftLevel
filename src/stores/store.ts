@@ -67,7 +67,10 @@ export const useHistoryDataStore = defineStore('historyData', () => {
       return acc;
     }, new Map<string, number>());
 
-    const mostUsedCmd = Array.from(mainCmdUsage).reduce((max, curr) => curr[1] > max[1] ? curr : max, ['', 0])[0];
+    const mostUsedCmds = Array.from(mainCmdUsage)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 15)
+      .map(([cmd, count]) => ({ cmd, count }));
 
     const dailyData = allData.reduce((acc: Map<string, number>, curr: any) => {
       const date = `${curr.year}-${curr.month}-${curr.day}`;
@@ -102,7 +105,7 @@ export const useHistoryDataStore = defineStore('historyData', () => {
       yearlyData: Object.fromEntries(yearlyData),
       mainCmdUsage: Object.fromEntries(mainCmdUsage),
       dailyData: dailyDataArray,
-      mostUsedCmd,
+      mostUsedCmds,
       periodCounts,
       mostUsedCmdDayPerYear: Object.fromEntries(mostUsedCmdDayPerYear),
       hourlyData,
